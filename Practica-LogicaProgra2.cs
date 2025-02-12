@@ -49,7 +49,7 @@ namespace Practica_LogicadeProgra2
         {
             double aguinaldo=0;
 
-            double opcion_time = time / 365;
+            double opcion_time = time / 365.00;
 
             double salario_diario;
 
@@ -66,16 +66,15 @@ namespace Practica_LogicadeProgra2
                 {
                     aguinaldo = ((salario / 30) * 21);
                 }
-            }else if (opcion_time >= (30/365))
+            }
+            else if(opcion_time > 0)
             {
                 salario_diario = salario / 30;
+                opcion_time = (time+1)/365;
 
-                aguinaldo=((15*salario_diario * time)/12);
-            }else if(opcion_time > 0)
-            {
-                salario_diario = salario / 30;
 
-                aguinaldo = ((15 * salario_diario * time)/360);
+                aguinaldo=((15*salario_diario * opcion_time));
+
             }
             else
             {
@@ -114,7 +113,7 @@ namespace Practica_LogicadeProgra2
                 }
 
                 time_work=Convert.ToDouble(time_work);
-
+                Console.WriteLine(time_work);
                 double afp = Math.Round(salarioNominal * 0.0725, 2);
                 double isss = Math.Round(salarioNominal * 0.03, 2);
                 if (isss > 30)
@@ -136,9 +135,7 @@ namespace Practica_LogicadeProgra2
 
                 aguinaldo=cal_aguinaldo(salarioNominal, time_work);
 
-                aguinaldo=Math.Round(aguinaldo, 2);
-
-                Console.WriteLine("Su Aguinaldo es de: " + aguinaldo);
+                Console.WriteLine("Su Aguinaldo es de: " + aguinaldo.ToString("F2"));
               
 
                 Console.WriteLine("¿Desea calcular otro salario? (1 = Sí, 0 = No): ");
