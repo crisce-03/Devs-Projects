@@ -1,6 +1,16 @@
 ﻿using System;
 
-namespace Practica_LogicadeProgra
+/*Codigo Escrito por:
+        Axel Enrique Cerritos Torres
+        Cristopher Mauricio Cerritos Espino
+        Carlos Alfredo Vejar Noguera
+        Christopher Alexander González Alvarado
+        Jeferson Alessandro Velásquez Rivera
+        Marilin Yolanda Afane Vaxquez
+        Jooselyn Michelle Dimas Hernandez
+         */
+
+namespace Practica_LogicadeProgra2
 {
     internal class Program
     {
@@ -35,31 +45,33 @@ namespace Practica_LogicadeProgra
             return Math.Round(isr, 2);
         }
 
-        public static double cal_aguinaldo(double salario, double time, int opcion_time)
+        public static double cal_aguinaldo(double salario, double time)
         {
             double aguinaldo=0;
 
+            double opcion_time = time / 365;
+
             double salario_diario;
 
-            if(opcion_time==3)
+            if(opcion_time>=1)
             {
-                if (time >=1 & time <3)
+                if (opcion_time >=1 & opcion_time <3)
                 {
                     aguinaldo = ((salario / 30) * 15);
-                }else if (time < 10)
+                }else if (opcion_time < 10)
                 {
                     aguinaldo = ((salario / 30) * 19);
                 }
-                else if(time>10)
+                else if(opcion_time>10)
                 {
                     aguinaldo = ((salario / 30) * 21);
                 }
-            }else if (opcion_time == 2)
+            }else if (opcion_time >= (30/365))
             {
                 salario_diario = salario / 30;
 
                 aguinaldo=((15*salario_diario * time)/12);
-            }else if(opcion_time == 1)
+            }else if(opcion_time > 0)
             {
                 salario_diario = salario / 30;
 
@@ -101,13 +113,7 @@ namespace Practica_LogicadeProgra
                     Console.WriteLine("El formato de la fecha no es válido.");
                 }
 
-                Console.WriteLine(time_work);
-
-
-
-
-
-
+                time_work=Convert.ToDouble(time_work);
 
                 double afp = Math.Round(salarioNominal * 0.0725, 2);
                 double isss = Math.Round(salarioNominal * 0.03, 2);
@@ -127,8 +133,12 @@ namespace Practica_LogicadeProgra
 
                 Console.WriteLine("Su salario Neto mensual es de: " + salarioNeto.ToString("F2"));
 
-                
-                
+
+                aguinaldo=cal_aguinaldo(salarioNominal, time_work);
+
+                aguinaldo=Math.Round(aguinaldo, 2);
+
+                Console.WriteLine("Su Aguinaldo es de: " + aguinaldo);
               
 
                 Console.WriteLine("¿Desea calcular otro salario? (1 = Sí, 0 = No): ");
